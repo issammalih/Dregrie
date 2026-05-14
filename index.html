@@ -4,12 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#1e40af">
-<title>HYDROMAX — Sanitaire & Droguerie Professionnels</title>
-<meta name="description" content="HYDROMAX, votre spécialiste en sanitaire et droguerie. Plomberie, salle de bain, peinture, outillage. Qualité professionnelle, livraison rapide.">
-
+<title>HYDROMAX — Sanitaire & Droguerie Pro</title>
+<meta name="description" content="HYDROMAX, votre spécialiste sanitaire & droguerie au Maroc. Qualité, prix imbattables, livraison rapide.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
@@ -18,6 +17,7 @@
   --blue:#1e40af;
   --blue-2:#2563eb;
   --blue-3:#3b82f6;
+  --blue-4:#60a5fa;
   --blue-light:#eff6ff;
   --blue-glow:rgba(37,99,235,.25);
   --navy:#0f172a;
@@ -32,6 +32,7 @@
   --green:#22c55e;
   --whatsapp:#25D366;
   --orange:#f97316;
+  --gold:#fbbf24;
 }
 
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -43,72 +44,93 @@ body{
   overflow-x:hidden;
   font-size:15px;line-height:1.5;
   -webkit-font-smoothing:antialiased;
+  position:relative;
+}
+
+/* ===== ANIMATED BACKGROUND ===== */
+.bg-fx{
+  position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+}
+.bg-orb{
+  position:absolute;border-radius:50%;
+  filter:blur(60px);opacity:.5;
+  animation:orbFloat 15s ease-in-out infinite;
+}
+.bg-orb-1{width:300px;height:300px;background:rgba(37,99,235,.3);top:-100px;left:-100px}
+.bg-orb-2{width:250px;height:250px;background:rgba(96,165,250,.25);top:30%;right:-80px;animation-delay:3s}
+.bg-orb-3{width:280px;height:280px;background:rgba(59,130,246,.2);bottom:10%;left:-80px;animation-delay:6s}
+@keyframes orbFloat{
+  0%,100%{transform:translate(0,0) scale(1)}
+  33%{transform:translate(50px,40px) scale(1.1)}
+  66%{transform:translate(-30px,60px) scale(.9)}
+}
+
+/* Floating water drops in background */
+.bg-drops{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.drop{
+  position:absolute;
+  width:8px;height:8px;
+  background:radial-gradient(circle at 30% 30%,rgba(37,99,235,.6),rgba(37,99,235,.2));
+  border-radius:50% 50% 50% 0;
+  transform:rotate(-45deg);
+  animation:dropFall linear infinite;
+  opacity:.4;
+}
+@keyframes dropFall{
+  0%{transform:translateY(-50px) rotate(-45deg);opacity:0}
+  10%{opacity:.6}
+  90%{opacity:.6}
+  100%{transform:translateY(100vh) rotate(-45deg);opacity:0}
 }
 
 /* ===== NAV ===== */
 .nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   padding:14px 18px;
-  background:rgba(255,255,255,.95);
+  background:rgba(255,255,255,.92);
   backdrop-filter:blur(20px);
   -webkit-backdrop-filter:blur(20px);
   border-bottom:1px solid var(--gray-200);
   display:flex;align-items:center;justify-content:space-between;
 }
-.logo{
-  display:flex;align-items:center;gap:8px;
-  text-decoration:none;color:var(--navy);
-}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--navy)}
 .logo-icon{
-  width:36px;height:36px;border-radius:10px;
-  background:linear-gradient(135deg,var(--blue-2),var(--blue));
+  width:38px;height:38px;border-radius:10px;
+  background:linear-gradient(135deg,var(--blue-3),var(--blue));
   display:flex;align-items:center;justify-content:center;
-  box-shadow:0 4px 14px var(--blue-glow);
-  flex-shrink:0;
+  box-shadow:0 6px 18px var(--blue-glow);
+  flex-shrink:0;position:relative;
+  animation:logoPulse 3s ease infinite;
 }
-.logo-icon svg{width:20px;height:20px;color:#fff}
-.logo-text{
-  font-family:'Outfit',sans-serif;
-  font-size:19px;font-weight:800;
-  letter-spacing:-.5px;line-height:1;
+@keyframes logoPulse{
+  0%,100%{box-shadow:0 6px 18px var(--blue-glow)}
+  50%{box-shadow:0 6px 28px rgba(37,99,235,.5)}
 }
-.logo-text small{
-  display:block;font-size:9px;font-weight:600;
-  color:var(--gray-500);letter-spacing:2px;
-  text-transform:uppercase;margin-top:2px;
-}
+.logo-icon svg{width:20px;height:20px;color:#fff;animation:dropBob 2s ease infinite}
+@keyframes dropBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+.logo-text{font-family:'Outfit',sans-serif;font-size:19px;font-weight:800;letter-spacing:-.5px;line-height:1}
+.logo-text small{display:block;font-size:9px;font-weight:600;color:var(--gray-500);letter-spacing:2px;text-transform:uppercase;margin-top:2px}
 .nav-cta{
   padding:10px 18px;
   background:linear-gradient(135deg,var(--blue-2),var(--blue));
-  color:#fff;
-  font-size:13px;font-weight:700;
+  color:#fff;font-size:13px;font-weight:700;
   border-radius:100px;border:none;
   cursor:pointer;text-decoration:none;
   box-shadow:0 4px 14px var(--blue-glow);
   display:inline-flex;align-items:center;gap:6px;
+  transition:transform .2s;
 }
 .nav-cta svg{width:14px;height:14px}
 .nav-cta:active{transform:scale(.95)}
 
 /* ===== HERO ===== */
 .hero{
-  position:relative;
+  position:relative;z-index:2;
   padding:90px 18px 50px;
-  background:
-    radial-gradient(ellipse 80% 60% at 50% 0%,var(--blue-light),transparent 60%),
-    linear-gradient(180deg,#fff 0%,var(--blue-light) 100%);
+  background:linear-gradient(180deg,rgba(239,246,255,.6),rgba(255,255,255,.3));
   overflow:hidden;
 }
-.hero::before{
-  content:'';position:absolute;inset:0;pointer-events:none;
-  background-image:
-    linear-gradient(rgba(37,99,235,.04) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(37,99,235,.04) 1px,transparent 1px);
-  background-size:50px 50px;
-  mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,#000 30%,transparent 70%);
-  -webkit-mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,#000 30%,transparent 70%);
-}
-.hero-inner{position:relative;z-index:1;text-align:center}
+.hero-inner{position:relative;z-index:2;text-align:center}
 
 .hero-badge{
   display:inline-flex;align-items:center;gap:8px;
@@ -116,18 +138,19 @@ body{
   background:#fff;
   border:1px solid var(--blue-light);
   border-radius:100px;
-  font-size:11px;font-weight:600;
-  color:var(--blue);
+  font-size:11px;font-weight:600;color:var(--blue);
   margin-bottom:20px;
-  box-shadow:0 4px 12px rgba(37,99,235,.08);
+  box-shadow:0 6px 18px rgba(37,99,235,.1);
+  animation:badgeSlide .8s cubic-bezier(.34,1.56,.64,1) both;
 }
+@keyframes badgeSlide{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
 .hero-badge .dot{
   width:6px;height:6px;border-radius:50%;
   background:var(--green);
   box-shadow:0 0 8px var(--green);
   animation:dotPulse 1.5s ease infinite;
 }
-@keyframes dotPulse{0%,100%{opacity:1}50%{opacity:.4}}
+@keyframes dotPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
 
 .hero h1{
   font-family:'Outfit',sans-serif;
@@ -137,13 +160,19 @@ body{
   margin-bottom:16px;
   animation:slideUp .8s cubic-bezier(.34,1.56,.64,1) both;
 }
-.hero h1 .blue{color:var(--blue-2)}
-@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero h1 .blue{
+  background:linear-gradient(135deg,var(--blue-2),var(--blue-4));
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-size:200% auto;
+  animation:gradShift 4s linear infinite;
+}
+@keyframes gradShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes slideUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
 
 .hero p{
   font-size:15px;color:var(--gray-500);
-  max-width:340px;margin:0 auto 24px;
-  line-height:1.6;
+  max-width:340px;margin:0 auto 24px;line-height:1.6;
   animation:slideUp .8s .15s both;
 }
 
@@ -152,233 +181,221 @@ body{
   max-width:300px;margin:0 auto 36px;
   animation:slideUp .8s .3s both;
 }
-
 .btn-primary{
   padding:15px 24px;
   background:linear-gradient(135deg,var(--blue-2),var(--blue));
-  color:#fff;
-  font-size:14px;font-weight:700;
+  color:#fff;font-size:14px;font-weight:700;
   border:none;border-radius:100px;
   cursor:pointer;text-decoration:none;
   display:inline-flex;align-items:center;justify-content:center;gap:8px;
   box-shadow:0 8px 24px var(--blue-glow);
-  transition:transform .2s;
+  transition:transform .2s;position:relative;overflow:hidden;
 }
+.btn-primary::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);
+  transform:translateX(-100%);
+  animation:btnShine 3s ease infinite;
+}
+@keyframes btnShine{0%,100%{transform:translateX(-100%)}50%{transform:translateX(100%)}}
 .btn-primary:active{transform:scale(.97)}
-.btn-primary svg{width:16px;height:16px}
-
+.btn-primary svg{width:16px;height:16px;position:relative;z-index:1}
+.btn-primary span{position:relative;z-index:1}
 .btn-secondary{
   padding:14px 24px;
-  background:#fff;
-  color:var(--blue-2);
+  background:#fff;color:var(--blue-2);
   font-size:14px;font-weight:700;
   border:1.5px solid var(--gray-200);
-  border-radius:100px;
-  cursor:pointer;text-decoration:none;
+  border-radius:100px;cursor:pointer;text-decoration:none;
   display:inline-flex;align-items:center;justify-content:center;gap:8px;
   transition:all .2s;
 }
-.btn-secondary:active{transform:scale(.97);border-color:var(--blue-2)}
+.btn-secondary:active{transform:scale(.97);border-color:var(--blue-2);box-shadow:0 4px 14px var(--blue-glow)}
 .btn-secondary svg{width:16px;height:16px}
 
-/* Hero image stack */
+/* 3D Hero Visual */
 .hero-visual{
   position:relative;
   margin-bottom:30px;
+  height:300px;
+  display:flex;align-items:center;justify-content:center;
+  perspective:1000px;
   animation:slideUp 1s .4s both;
 }
-.hero-img{
-  width:100%;max-width:380px;
-  height:240px;
-  margin:0 auto;
-  border-radius:24px;
-  overflow:hidden;
-  box-shadow:0 30px 60px rgba(37,99,235,.2),0 10px 20px rgba(0,0,0,.05);
+.hero-3d-stack{
   position:relative;
+  width:280px;height:280px;
+  transform-style:preserve-3d;
+  animation:stackRotate 20s linear infinite;
 }
-.hero-img img{width:100%;height:100%;object-fit:cover;display:block}
-.hero-img::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(180deg,transparent 50%,rgba(15,23,42,.3));
+@keyframes stackRotate{
+  from{transform:rotateY(0) rotateX(10deg)}
+  to{transform:rotateY(360deg) rotateX(10deg)}
 }
-.hero-float-1,.hero-float-2{
+.hero-3d-card{
   position:absolute;
-  background:#fff;
-  border-radius:14px;
-  padding:10px 14px;
-  box-shadow:0 10px 30px rgba(0,0,0,.12);
-  display:flex;align-items:center;gap:10px;
-  animation:floatY 4s ease-in-out infinite;
-}
-.hero-float-1{top:18px;left:6%}
-.hero-float-2{bottom:18px;right:6%;animation-delay:1s}
-@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.float-icon{
-  width:32px;height:32px;border-radius:10px;
-  background:var(--blue-light);
+  width:130px;height:130px;
+  top:50%;left:50%;
+  margin:-65px 0 0 -65px;
+  border-radius:20px;
+  background:linear-gradient(135deg,#fff,var(--blue-light));
+  border:2px solid var(--blue-3);
   display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;
+  box-shadow:0 20px 40px rgba(37,99,235,.3);
+  backdrop-filter:blur(10px);
 }
-.float-icon svg{width:18px;height:18px;color:var(--blue-2)}
-.float-text strong{display:block;font-size:11px;color:var(--navy);font-weight:700}
-.float-text small{display:block;font-size:9px;color:var(--gray-500);margin-top:1px}
+.hero-3d-card svg{width:60px;height:60px;color:var(--blue-2);filter:drop-shadow(0 0 10px var(--blue-glow))}
+.hero-3d-card.c1{transform:translateZ(120px)}
+.hero-3d-card.c2{transform:rotateY(120deg) translateZ(120px)}
+.hero-3d-card.c3{transform:rotateY(240deg) translateZ(120px)}
 
-/* Hero stats */
+/* Floating particles around 3D */
+.hero-particle{
+  position:absolute;
+  width:6px;height:6px;border-radius:50%;
+  background:var(--blue-3);
+  box-shadow:0 0 10px var(--blue-3);
+  opacity:.6;
+  animation:particleFloat 4s ease infinite;
+}
+.hero-particle:nth-child(1){top:10%;left:15%;animation-delay:0s}
+.hero-particle:nth-child(2){top:20%;right:20%;animation-delay:.5s;background:var(--blue-4)}
+.hero-particle:nth-child(3){bottom:25%;left:10%;animation-delay:1s}
+.hero-particle:nth-child(4){bottom:15%;right:15%;animation-delay:1.5s;background:var(--blue-4)}
+.hero-particle:nth-child(5){top:50%;left:5%;animation-delay:2s}
+.hero-particle:nth-child(6){top:60%;right:8%;animation-delay:2.5s}
+@keyframes particleFloat{
+  0%,100%{transform:translateY(0) scale(1);opacity:.6}
+  50%{transform:translateY(-20px) scale(1.5);opacity:1}
+}
+
 .hero-stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:8px;
-  max-width:380px;margin:0 auto;
-  padding:16px;
-  background:#fff;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
+  max-width:380px;margin:0 auto;padding:16px;
+  background:rgba(255,255,255,.8);
+  backdrop-filter:blur(10px);
   border:1px solid var(--gray-200);
   border-radius:18px;
-  box-shadow:0 4px 14px rgba(0,0,0,.04);
+  box-shadow:0 10px 30px rgba(37,99,235,.1);
   animation:slideUp 1s .6s both;
 }
 .stat-item{text-align:center;padding:0 4px}
 .stat-num{
   font-family:'Outfit',sans-serif;
   font-size:22px;font-weight:800;
-  color:var(--blue-2);line-height:1;
+  background:linear-gradient(135deg,var(--blue-2),var(--blue-4));
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  line-height:1;
 }
-.stat-lbl{
-  font-size:10px;color:var(--gray-500);
-  margin-top:4px;font-weight:600;
-  text-transform:uppercase;letter-spacing:.5px;
-}
+.stat-lbl{font-size:10px;color:var(--gray-500);margin-top:4px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
 
 /* ===== SECTIONS ===== */
-section{position:relative;padding:60px 18px}
+section{position:relative;z-index:2;padding:60px 18px}
 
-.section-head{text-align:center;margin-bottom:32px}
+.section-head{text-align:center;margin-bottom:32px;animation:slideUp .8s both}
 .section-tag{
   display:inline-block;padding:5px 14px;
-  background:var(--blue-light);
-  color:var(--blue-2);
-  border-radius:100px;
-  font-size:11px;font-weight:700;
-  letter-spacing:1px;
-  text-transform:uppercase;
-  margin-bottom:12px;
+  background:var(--blue-light);color:var(--blue-2);
+  border-radius:100px;font-size:11px;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;
 }
 .section-head h2{
   font-family:'Outfit',sans-serif;
-  font-size:28px;font-weight:800;
-  color:var(--navy);
-  letter-spacing:-1px;line-height:1.1;
-  margin-bottom:10px;
+  font-size:28px;font-weight:800;color:var(--navy);
+  letter-spacing:-1px;line-height:1.1;margin-bottom:10px;
 }
-.section-head h2 .blue{color:var(--blue-2)}
-.section-head p{
-  font-size:14px;color:var(--gray-500);
-  max-width:360px;margin:0 auto;line-height:1.6;
+.section-head h2 .blue{
+  background:linear-gradient(135deg,var(--blue-2),var(--blue-4));
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
+.section-head p{font-size:14px;color:var(--gray-500);max-width:360px;margin:0 auto;line-height:1.6}
 
 /* ===== CATEGORIES ===== */
-.cats-section{background:var(--gray-50)}
+.cats-section{background:linear-gradient(180deg,rgba(248,250,252,.6),rgba(255,255,255,.4))}
 .cats-grid{display:flex;flex-direction:column;gap:12px;max-width:420px;margin:0 auto}
 .cat-card{
-  background:#fff;
-  border-radius:18px;
-  padding:18px;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(10px);
+  border-radius:18px;padding:18px;
   display:flex;align-items:center;gap:14px;
   border:1px solid var(--gray-200);
   text-decoration:none;color:inherit;
-  transition:all .3s;
-  box-shadow:0 1px 3px rgba(0,0,0,.04);
+  transition:all .3s cubic-bezier(.34,1.56,.64,1);
+  box-shadow:0 4px 12px rgba(0,0,0,.04);
+  position:relative;overflow:hidden;
 }
-.cat-card:active{transform:scale(.98);border-color:var(--blue-2);box-shadow:0 8px 20px var(--blue-glow)}
+.cat-card::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:4px;
+  background:linear-gradient(180deg,var(--blue-2),var(--blue-4));
+  transform:scaleY(0);transform-origin:top;
+  transition:transform .3s;
+}
+.cat-card:active{transform:scale(.98);border-color:var(--blue-3);box-shadow:0 12px 28px var(--blue-glow)}
+.cat-card:active::before{transform:scaleY(1)}
 .cat-icon{
-  width:56px;height:56px;
-  border-radius:14px;
+  width:56px;height:56px;border-radius:14px;
   background:linear-gradient(135deg,var(--blue-light),#dbeafe);
   display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;
+  flex-shrink:0;transition:transform .3s;
 }
+.cat-card:hover .cat-icon,.cat-card:active .cat-icon{transform:rotate(-8deg) scale(1.1)}
 .cat-icon svg{width:30px;height:30px;color:var(--blue-2)}
 .cat-info{flex:1;min-width:0}
-.cat-name{
-  font-size:15px;font-weight:700;
-  color:var(--navy);margin-bottom:3px;
-}
-.cat-desc{
-  font-size:12.5px;color:var(--gray-500);
-  line-height:1.4;
-}
+.cat-name{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:3px}
+.cat-desc{font-size:12.5px;color:var(--gray-500);line-height:1.4}
 .cat-arrow{
   width:32px;height:32px;border-radius:50%;
   background:var(--blue-light);
   display:flex;align-items:center;justify-content:center;
-  color:var(--blue-2);
-  flex-shrink:0;
+  color:var(--blue-2);flex-shrink:0;
 }
 
 /* ===== PRODUCTS ===== */
-.products-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-  max-width:420px;margin:0 auto;
-}
+.products-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:420px;margin:0 auto}
 .product{
-  background:#fff;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(10px);
   border:1px solid var(--gray-200);
-  border-radius:16px;
-  overflow:hidden;
-  transition:all .3s;
+  border-radius:16px;overflow:hidden;
+  transition:all .3s cubic-bezier(.34,1.56,.64,1);
   text-decoration:none;color:inherit;
   display:flex;flex-direction:column;
+  box-shadow:0 4px 12px rgba(0,0,0,.04);
 }
-.product:active{transform:scale(.97);box-shadow:0 8px 20px var(--blue-glow)}
-.product-img{
-  width:100%;
-  height:140px;
-  overflow:hidden;
-  position:relative;
-  background:var(--gray-100);
-}
-.product-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
-.product:hover .product-img img{transform:scale(1.05)}
+.product:active{transform:scale(.97);box-shadow:0 12px 28px var(--blue-glow)}
+.product-img{width:100%;height:140px;overflow:hidden;position:relative;background:var(--gray-100)}
+.product-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.product:active .product-img img{transform:scale(1.08)}
 .product-tag{
-  position:absolute;top:8px;left:8px;
-  padding:3px 8px;
-  background:var(--orange);
-  color:#fff;
-  font-size:9px;font-weight:700;
-  border-radius:100px;
+  position:absolute;top:8px;left:8px;padding:3px 8px;
+  background:var(--orange);color:#fff;
+  font-size:9px;font-weight:700;border-radius:100px;
   letter-spacing:.5px;text-transform:uppercase;
+  box-shadow:0 4px 8px rgba(0,0,0,.15);
 }
 .product-tag.new{background:var(--green)}
-.product-tag.promo{background:var(--orange)}
 .product-info{padding:12px;display:flex;flex-direction:column;flex:1}
-.product-cat{
-  font-size:9px;font-weight:700;
-  color:var(--gray-400);
-  letter-spacing:1px;text-transform:uppercase;
-  margin-bottom:4px;
-}
+.product-cat{font-size:9px;font-weight:700;color:var(--gray-400);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
 .product-name{
-  font-size:13px;font-weight:700;
-  color:var(--navy);
-  line-height:1.3;
-  margin-bottom:8px;
+  font-size:13px;font-weight:700;color:var(--navy);
+  line-height:1.3;margin-bottom:8px;
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
-  overflow:hidden;
-  min-height:34px;
+  overflow:hidden;min-height:34px;
 }
 .product-price{
   font-family:'Outfit',sans-serif;
   font-size:18px;font-weight:800;
-  color:var(--blue-2);
+  background:linear-gradient(135deg,var(--blue-2),var(--blue-4));
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
   margin-bottom:10px;margin-top:auto;
 }
-.product-price small{font-size:11px;color:var(--gray-500);font-weight:500;margin-left:2px}
+.product-price small{font-size:11px;color:var(--gray-500);font-weight:500;margin-left:2px;-webkit-text-fill-color:var(--gray-500)}
 .product-btn{
-  width:100%;
-  padding:9px;
-  background:var(--whatsapp);
-  color:#fff;
+  width:100%;padding:9px;
+  background:var(--whatsapp);color:#fff;
   font-size:11px;font-weight:700;
   border:none;border-radius:100px;
   cursor:pointer;text-decoration:none;
@@ -388,106 +405,93 @@ section{position:relative;padding:60px 18px}
 .product-btn:active{transform:scale(.95);background:#128C7E}
 .product-btn svg{width:13px;height:13px}
 
-/* See all button */
 .see-all{
   display:flex;align-items:center;justify-content:center;gap:8px;
-  margin:24px auto 0;
-  max-width:300px;
+  margin:24px auto 0;max-width:300px;
   padding:14px 24px;
-  background:var(--navy);
-  color:#fff;
+  background:var(--navy);color:#fff;
   font-size:13px;font-weight:700;
   border-radius:100px;border:none;
   cursor:pointer;text-decoration:none;
   transition:all .2s;
+  box-shadow:0 8px 24px rgba(15,23,42,.2);
 }
 .see-all:active{transform:scale(.97)}
 .see-all svg{width:14px;height:14px}
 
 /* ===== FEATURES ===== */
-.features-section{background:var(--navy);color:#fff}
+.features-section{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.features-section::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 0% 0%,rgba(37,99,235,.3),transparent 50%),
+    radial-gradient(circle at 100% 100%,rgba(96,165,250,.2),transparent 50%);
+  pointer-events:none;
+}
+.features-section > *{position:relative;z-index:1}
 .features-section .section-head h2{color:#fff}
-.features-section .section-head h2 .blue{color:var(--blue-3)}
+.features-section .section-head h2 .blue{
+  background:linear-gradient(135deg,var(--blue-3),var(--blue-4));
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
 .features-section .section-head p{color:#94a3b8}
-.features-section .section-tag{background:rgba(59,130,246,.15);color:var(--blue-3)}
+.features-section .section-tag{background:rgba(59,130,246,.15);color:var(--blue-4)}
 
 .features-grid{display:flex;flex-direction:column;gap:12px;max-width:420px;margin:0 auto}
 .feature{
   background:rgba(255,255,255,.04);
   border:1px solid rgba(255,255,255,.08);
-  border-radius:16px;
-  padding:20px;
+  border-radius:16px;padding:20px;
   display:flex;align-items:flex-start;gap:14px;
   backdrop-filter:blur(10px);
+  transition:all .3s;
 }
+.feature:active{background:rgba(255,255,255,.08);border-color:var(--blue-3);transform:scale(.98)}
 .feature-icon{
-  width:48px;height:48px;
-  border-radius:14px;
+  width:48px;height:48px;border-radius:14px;
   background:linear-gradient(135deg,var(--blue-2),var(--blue));
   display:flex;align-items:center;justify-content:center;
   flex-shrink:0;
   box-shadow:0 8px 20px var(--blue-glow);
+  animation:iconPulse 3s ease infinite;
 }
+@keyframes iconPulse{0%,100%{box-shadow:0 8px 20px var(--blue-glow)}50%{box-shadow:0 8px 30px rgba(37,99,235,.5)}}
 .feature-icon svg{width:24px;height:24px;color:#fff}
-.feature h3{
-  font-family:'Outfit',sans-serif;
-  font-size:15px;font-weight:700;
-  margin-bottom:4px;color:#fff;
-}
-.feature p{
-  font-size:12.5px;color:#94a3b8;
-  line-height:1.5;
-}
+.feature h3{font-family:'Outfit',sans-serif;font-size:15px;font-weight:700;margin-bottom:4px;color:#fff}
+.feature p{font-size:12.5px;color:#94a3b8;line-height:1.5}
 
-/* ===== SHOWROOM GALLERY ===== */
-.gallery-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  max-width:420px;margin:0 auto;
-}
+/* ===== GALLERY ===== */
+.gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:420px;margin:0 auto}
 .gallery-item{
-  border-radius:16px;
-  overflow:hidden;
-  position:relative;
-  aspect-ratio:1;
-  background:var(--gray-100);
-  cursor:pointer;
+  border-radius:16px;overflow:hidden;
+  position:relative;aspect-ratio:1;
+  background:var(--gray-100);cursor:pointer;
+  transition:all .3s cubic-bezier(.34,1.56,.64,1);
+  box-shadow:0 4px 14px rgba(0,0,0,.06);
 }
+.gallery-item:active{transform:scale(.97);box-shadow:0 12px 28px var(--blue-glow)}
 .gallery-item:nth-child(1){grid-row:span 2;aspect-ratio:auto}
-.gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
-.gallery-item:active img{transform:scale(1.05)}
-.gallery-item::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(180deg,transparent 60%,rgba(15,23,42,.7));
-}
-.gallery-label{
-  position:absolute;bottom:10px;left:10px;
-  color:#fff;
-  font-size:11px;font-weight:700;
-  z-index:1;
-}
+.gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.gallery-item:active img{transform:scale(1.1)}
+.gallery-item::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(15,23,42,.7))}
+.gallery-label{position:absolute;bottom:10px;left:10px;color:#fff;font-size:11px;font-weight:700;z-index:1}
 
 /* ===== TESTIMONIALS ===== */
-.testi-section{background:var(--gray-50)}
+.testi-section{background:linear-gradient(180deg,rgba(248,250,252,.6),rgba(255,255,255,.4))}
 .testi-wrap{display:flex;flex-direction:column;gap:14px;max-width:420px;margin:0 auto}
 .testi{
-  background:#fff;
-  border-radius:18px;
-  padding:22px 20px;
-  box-shadow:0 1px 3px rgba(0,0,0,.04);
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(10px);
+  border-radius:18px;padding:22px 20px;
+  box-shadow:0 4px 12px rgba(0,0,0,.04);
   border:1px solid var(--gray-200);
+  transition:all .3s;
 }
-.testi-stars{color:#fbbf24;letter-spacing:2px;margin-bottom:10px;font-size:14px}
-.testi-text{
-  font-size:13.5px;color:var(--gray-700);
-  line-height:1.6;margin-bottom:14px;
-}
-.testi-author{
-  display:flex;align-items:center;gap:10px;
-  padding-top:12px;
-  border-top:1px solid var(--gray-100);
-}
+.testi:active{transform:translateY(-3px);box-shadow:0 14px 30px var(--blue-glow)}
+.testi-stars{color:var(--gold);letter-spacing:2px;margin-bottom:10px;font-size:14px}
+.testi-text{font-size:13.5px;color:var(--gray-700);line-height:1.6;margin-bottom:14px}
+.testi-author{display:flex;align-items:center;gap:10px;padding-top:12px;border-top:1px solid var(--gray-100)}
 .testi-avatar{
   width:38px;height:38px;border-radius:50%;
   background:linear-gradient(135deg,var(--blue-2),var(--blue));
@@ -495,55 +499,41 @@ section{position:relative;padding:60px 18px}
   font-weight:800;color:#fff;font-size:13px;
 }
 .testi-name{font-size:13px;font-weight:700;color:var(--navy)}
-.testi-loc{
-  font-size:11px;color:var(--gray-500);
-  letter-spacing:.5px;margin-top:1px;
-}
+.testi-loc{font-size:11px;color:var(--gray-500);letter-spacing:.5px;margin-top:1px}
 
 /* ===== CONTACT ===== */
-.contact-section{background:var(--blue-light)}
+.contact-section{background:linear-gradient(180deg,var(--blue-light),rgba(255,255,255,.5))}
 .contact-grid{display:flex;flex-direction:column;gap:12px;max-width:420px;margin:0 auto}
 .contact-card{
-  background:#fff;
-  border-radius:18px;
-  padding:18px;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(10px);
+  border-radius:18px;padding:18px;
   display:flex;align-items:center;gap:14px;
   text-decoration:none;color:inherit;
-  transition:all .2s;
+  transition:all .3s;
   border:1px solid var(--gray-200);
+  box-shadow:0 4px 12px rgba(0,0,0,.04);
 }
-.contact-card:active{transform:scale(.98);box-shadow:0 8px 20px var(--blue-glow)}
+.contact-card:active{transform:scale(.98);box-shadow:0 12px 28px var(--blue-glow);border-color:var(--blue-3)}
 .contact-icon{
-  width:48px;height:48px;
-  border-radius:14px;
+  width:48px;height:48px;border-radius:14px;
   background:linear-gradient(135deg,var(--blue-2),var(--blue));
   display:flex;align-items:center;justify-content:center;
   flex-shrink:0;
   box-shadow:0 4px 12px var(--blue-glow);
 }
 .contact-icon svg{width:22px;height:22px;color:#fff}
-.contact-card.whatsapp .contact-icon{background:linear-gradient(135deg,var(--whatsapp),#128C7E)}
+.contact-card.whatsapp .contact-icon{background:linear-gradient(135deg,var(--whatsapp),#128C7E);box-shadow:0 4px 12px rgba(37,211,102,.3)}
 .contact-info{flex:1;min-width:0}
-.contact-label{
-  font-size:10px;font-weight:600;
-  color:var(--gray-500);
-  text-transform:uppercase;letter-spacing:1px;
-  margin-bottom:2px;
-}
-.contact-value{
-  font-size:14px;font-weight:700;
-  color:var(--navy);
-  word-break:break-word;
-}
+.contact-label{font-size:10px;font-weight:600;color:var(--gray-500);text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
+.contact-value{font-size:14px;font-weight:700;color:var(--navy);word-break:break-word}
 
 /* ===== CTA ===== */
 .cta-section{padding:40px 18px 60px}
 .cta-box{
-  max-width:420px;margin:0 auto;
-  padding:36px 24px;
+  max-width:420px;margin:0 auto;padding:36px 24px;
   background:linear-gradient(135deg,var(--blue-2),var(--blue));
-  border-radius:28px;
-  text-align:center;
+  border-radius:28px;text-align:center;
   position:relative;overflow:hidden;
   box-shadow:0 20px 50px var(--blue-glow);
 }
@@ -553,24 +543,16 @@ section{position:relative;padding:60px 18px}
     radial-gradient(circle at 100% 0%,rgba(255,255,255,.2),transparent 50%),
     radial-gradient(circle at 0% 100%,rgba(255,255,255,.1),transparent 50%);
   pointer-events:none;
+  animation:ctaGlow 4s ease infinite;
 }
+@keyframes ctaGlow{0%,100%{opacity:.7}50%{opacity:1}}
 .cta-box > *{position:relative;z-index:1}
-.cta-box h2{
-  font-family:'Outfit',sans-serif;
-  font-size:26px;font-weight:800;
-  color:#fff;
-  letter-spacing:-.5px;line-height:1.1;
-  margin-bottom:10px;
-}
-.cta-box p{
-  font-size:14px;color:rgba(255,255,255,.85);
-  margin-bottom:22px;line-height:1.5;
-}
+.cta-box h2{font-family:'Outfit',sans-serif;font-size:26px;font-weight:800;color:#fff;letter-spacing:-.5px;line-height:1.1;margin-bottom:10px}
+.cta-box p{font-size:14px;color:rgba(255,255,255,.85);margin-bottom:22px;line-height:1.5}
 .cta-btn{
   width:100%;max-width:280px;margin:0 auto;
   padding:14px 20px;
-  background:#fff;
-  color:var(--blue);
+  background:#fff;color:var(--blue);
   font-size:14px;font-weight:800;
   border:none;border-radius:100px;
   cursor:pointer;text-decoration:none;
@@ -582,60 +564,23 @@ section{position:relative;padding:60px 18px}
 .cta-btn svg{width:16px;height:16px}
 
 /* ===== FOOTER ===== */
-footer{
-  background:var(--navy);color:#94a3b8;
-  padding:40px 18px 24px;text-align:center;
-}
+footer{background:var(--navy);color:#94a3b8;padding:40px 18px 24px;text-align:center;position:relative;z-index:2}
 footer .logo{justify-content:center;margin-bottom:14px}
 footer .logo-text{color:#fff}
 footer .logo-text small{color:#64748b}
-.foot-desc{
-  font-size:13px;
-  max-width:300px;margin:0 auto 22px;
-  line-height:1.6;
-}
-.foot-socials{
-  display:flex;justify-content:center;gap:10px;
-  margin-bottom:24px;
-}
-.foot-soc{
-  width:38px;height:38px;
-  border-radius:10px;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.1);
-  display:flex;align-items:center;justify-content:center;
-  color:#fff;text-decoration:none;
-  transition:all .2s;
-}
-.foot-soc:active{transform:scale(.9);background:var(--blue-2)}
-.foot-soc svg{width:16px;height:16px}
+.foot-desc{font-size:13px;max-width:300px;margin:0 auto 22px;line-height:1.6}
 .foot-hours{
   background:rgba(255,255,255,.04);
   border:1px solid rgba(255,255,255,.08);
-  border-radius:16px;
-  padding:16px;
-  margin-bottom:20px;
-  max-width:300px;margin-left:auto;margin-right:auto;
+  border-radius:16px;padding:16px;
+  margin-bottom:20px;max-width:300px;margin-left:auto;margin-right:auto;
   text-align:left;
 }
-.foot-hours-title{
-  font-size:11px;font-weight:700;
-  color:#fff;letter-spacing:1.5px;
-  text-transform:uppercase;margin-bottom:10px;
-  text-align:center;
-}
-.foot-hour-row{
-  display:flex;justify-content:space-between;
-  padding:5px 0;font-size:12px;
-}
+.foot-hours-title{font-size:11px;font-weight:700;color:#fff;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;text-align:center}
+.foot-hour-row{display:flex;justify-content:space-between;padding:5px 0;font-size:12px}
 .foot-hour-row span:first-child{color:#94a3b8}
 .foot-hour-row span:last-child{color:#fff;font-weight:600}
-.foot-bottom{
-  padding-top:20px;
-  border-top:1px solid rgba(255,255,255,.08);
-  font-size:11px;color:#64748b;
-  letter-spacing:.5px;
-}
+.foot-bottom{padding-top:20px;border-top:1px solid rgba(255,255,255,.08);font-size:11px;color:#64748b;letter-spacing:.5px}
 
 /* ===== WHATSAPP FLOAT ===== */
 .wa-float{
@@ -656,14 +601,108 @@ footer .logo-text small{color:#64748b}
 @keyframes waRing{0%{transform:scale(.9);opacity:1}100%{transform:scale(1.5);opacity:0}}
 .wa-float svg{width:28px;height:28px;fill:#fff;position:relative;z-index:1}
 
-/* ===== DESKTOP (Mobile-first!) ===== */
+/* ===== POPUP MODAL ===== */
+.modal{
+  position:fixed;inset:0;
+  background:rgba(15,23,42,.85);
+  backdrop-filter:blur(10px);
+  display:none;align-items:center;justify-content:center;
+  z-index:200;padding:18px;
+}
+.modal.open{display:flex;animation:modalFade .3s ease}
+@keyframes modalFade{from{opacity:0}to{opacity:1}}
+.modal-content{
+  background:#fff;
+  border-radius:28px;
+  padding:36px 24px 24px;
+  max-width:380px;width:100%;
+  position:relative;
+  box-shadow:0 30px 80px rgba(37,99,235,.4);
+  animation:modalPop .5s cubic-bezier(.34,1.56,.64,1);
+  overflow:hidden;
+}
+.modal-content::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:120px;
+  background:linear-gradient(180deg,var(--blue-light),transparent);
+  pointer-events:none;
+}
+@keyframes modalPop{from{opacity:0;transform:scale(.85) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal-close{
+  position:absolute;top:14px;right:14px;
+  width:32px;height:32px;
+  background:var(--gray-100);border:none;border-radius:50%;
+  color:var(--gray-700);font-size:16px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  z-index:2;transition:all .2s;
+}
+.modal-close:active{transform:scale(.9);background:var(--gray-200)}
+.modal-emoji{
+  font-size:48px;text-align:center;margin-bottom:10px;
+  animation:emojiBounce 2s ease infinite;
+  position:relative;z-index:1;
+}
+@keyframes emojiBounce{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-10px) rotate(10deg)}}
+.modal-content h3{
+  font-family:'Outfit',sans-serif;
+  font-size:24px;font-weight:800;
+  text-align:center;margin-bottom:8px;
+  letter-spacing:-.5px;color:var(--navy);
+  position:relative;z-index:1;
+}
+.modal-content h3 .blue{
+  background:linear-gradient(135deg,var(--blue-2),var(--blue-4));
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.modal-content > p{
+  font-size:14px;color:var(--gray-500);
+  text-align:center;margin-bottom:20px;line-height:1.6;
+  position:relative;z-index:1;
+}
+.modal-content strong{color:var(--blue-2)}
+.modal-highlight{
+  background:linear-gradient(135deg,var(--blue-light),#dbeafe);
+  border:1px solid var(--blue-3);
+  border-radius:16px;padding:18px;text-align:center;
+  margin-bottom:22px;position:relative;z-index:1;
+}
+.modal-highlight .num{
+  font-family:'Outfit',sans-serif;
+  font-size:30px;font-weight:800;
+  background:linear-gradient(135deg,var(--blue-2),var(--blue-4));
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  line-height:1;margin-bottom:4px;
+}
+.modal-highlight .lbl{font-size:12px;color:var(--blue);text-transform:uppercase;letter-spacing:1px;font-weight:700}
+.modal-btn{
+  width:100%;padding:14px;
+  background:linear-gradient(135deg,var(--whatsapp),#128C7E);
+  color:#fff;font-size:14px;font-weight:700;
+  border:none;border-radius:100px;
+  cursor:pointer;text-decoration:none;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  box-shadow:0 8px 25px rgba(37,211,102,.4);
+  transition:transform .2s;
+  position:relative;z-index:1;
+}
+.modal-btn:active{transform:scale(.97)}
+.modal-btn svg{width:18px;height:18px}
+
+/* ===== DESKTOP ===== */
 @media(min-width:768px){
   body{font-size:16px}
   .nav{padding:16px 32px}
   .hero{padding:120px 32px 70px}
-  .hero h1{font-size:54px;max-width:600px;margin-left:auto;margin-right:auto}
+  .hero h1{font-size:54px;max-width:700px;margin-left:auto;margin-right:auto}
   .hero p{font-size:17px;max-width:480px}
-  .hero-img{height:340px;max-width:600px}
+  .hero-visual{height:400px}
+  .hero-3d-stack{width:400px;height:400px}
+  .hero-3d-card{width:180px;height:180px;margin:-90px 0 0 -90px}
+  .hero-3d-card.c1{transform:translateZ(170px)}
+  .hero-3d-card.c2{transform:rotateY(120deg) translateZ(170px)}
+  .hero-3d-card.c3{transform:rotateY(240deg) translateZ(170px)}
+  .hero-3d-card svg{width:80px;height:80px}
   .hero-stats{max-width:520px;padding:20px}
   .stat-num{font-size:28px}
   
@@ -673,33 +712,34 @@ footer .logo-text small{color:#64748b}
   .cats-grid,.testi-wrap,.features-grid,.contact-grid{max-width:1100px}
   .cats-grid{flex-direction:row;flex-wrap:wrap}
   .cat-card{flex:1;min-width:280px}
-  
   .products-grid{grid-template-columns:repeat(4,1fr);max-width:1100px;gap:20px}
   .product-img{height:200px}
   .product-info{padding:16px}
   .product-name{font-size:14px;min-height:38px}
   .product-price{font-size:22px}
-  
   .features-grid{flex-direction:row;flex-wrap:wrap}
   .feature{flex:1;min-width:280px}
-  
   .gallery-grid{grid-template-columns:repeat(4,1fr);max-width:1000px;gap:14px}
-  
   .testi-wrap{flex-direction:row}
   .testi{flex:1}
-  
   .contact-grid{flex-direction:row}
   .contact-card{flex:1}
-  
   .cta-box{max-width:800px;padding:50px 40px}
   .cta-box h2{font-size:36px}
-  
   .wa-float{width:64px;height:64px;bottom:24px;right:24px}
   .wa-float svg{width:32px;height:32px}
 }
 </style>
 </head>
 <body>
+
+<!-- Animated background -->
+<div class="bg-fx">
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+  <div class="bg-orb bg-orb-3"></div>
+</div>
+<div class="bg-drops" id="dropsBg"></div>
 
 <!-- ===== NAV ===== -->
 <nav class="nav">
@@ -727,35 +767,31 @@ footer .logo-text small{color:#64748b}
     
     <div class="hero-cta">
       <a href="#products" class="btn-primary">
-        Découvrir les Produits
+        <span>Découvrir les Produits</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
-      <a href="https://wa.me/212617499697?text=Salam%20HYDROMAX!%20Bghit%20chi%20info" target="_blank" class="btn-secondary">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        WhatsApp Direct
+      <a href="https://wa.me/212617499697?text=Salam%20HYDROMAX!" target="_blank" class="btn-secondary">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 21.5c-1.94 0-3.74-.59-5.22-1.6L3 21l1.1-3.7C2.99 15.7 2.5 13.91 2.5 12 2.5 6.75 6.75 2.5 12 2.5S21.5 6.75 21.5 12 17.25 21.5 12 21.5z"/></svg>
+        WhatsApp
       </a>
     </div>
     
     <div class="hero-visual">
-      <div class="hero-img">
-        <img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800&q=80" alt="Salle de bain moderne">
-      </div>
-      <div class="hero-float-1">
-        <div class="float-icon">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+      <div class="hero-particle"></div>
+      <div class="hero-particle"></div>
+      <div class="hero-particle"></div>
+      <div class="hero-particle"></div>
+      <div class="hero-particle"></div>
+      <div class="hero-particle"></div>
+      <div class="hero-3d-stack">
+        <div class="hero-3d-card c1">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-5.5 7.5-8 11.5-8 14.5C4 20.5 7.5 24 12 24s8-3.5 8-7.5C20 13.5 17.5 9.5 12 2z"/></svg>
         </div>
-        <div class="float-text">
-          <strong>Garantie</strong>
-          <small>Produits certifiés</small>
+        <div class="hero-3d-card c2">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.3 8.925l-4.25-4.2 1.4-1.4c.383-.383.85-.575 1.4-.575s1.017.192 1.4.575l1.4 1.4c.383.383.583.842.6 1.375.017.533-.167 1-.55 1.4L19.3 8.925zM17.85 10.375L7.25 21H3v-4.25l10.6-10.6 4.25 4.225z"/></svg>
         </div>
-      </div>
-      <div class="hero-float-2">
-        <div class="float-icon">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 17v2h6v-2H3M3 5v2h10V5H3m10 16v-2h8v-2h-8v-2h-2v6h2M7 9v2H3v2h4v2h2V9H7m14 4v-2H11v2h10m-6-4h2V7h4V5h-4V3h-2v6z"/></svg>
-        </div>
-        <div class="float-text">
-          <strong>5000+</strong>
-          <small>Produits</small>
+        <div class="hero-3d-card c3">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
         </div>
       </div>
     </div>
@@ -773,51 +809,27 @@ footer .logo-text small{color:#64748b}
   <div class="section-head">
     <span class="section-tag">Catégories</span>
     <h2>Explorez Nos <span class="blue">Rayons</span></h2>
-    <p>Tout ce dont vous avez besoin pour vos projets de construction et rénovation</p>
+    <p>Tout ce dont vous avez besoin pour vos projets</p>
   </div>
-  
   <div class="cats-grid">
     <a href="#products" class="cat-card">
-      <div class="cat-icon">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-5.5 7.5-8 11.5-8 14.5C4 20.5 7.5 24 12 24s8-3.5 8-7.5C20 13.5 17.5 9.5 12 2z"/></svg>
-      </div>
-      <div class="cat-info">
-        <div class="cat-name">Sanitaire & Plomberie</div>
-        <div class="cat-desc">Robinets, lavabos, WC, douches, baignoires</div>
-      </div>
+      <div class="cat-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-5.5 7.5-8 11.5-8 14.5C4 20.5 7.5 24 12 24s8-3.5 8-7.5C20 13.5 17.5 9.5 12 2z"/></svg></div>
+      <div class="cat-info"><div class="cat-name">Sanitaire & Plomberie</div><div class="cat-desc">Robinets, lavabos, WC, douches</div></div>
       <div class="cat-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 18l6-6-6-6"/></svg></div>
     </a>
-    
     <a href="#products" class="cat-card">
-      <div class="cat-icon">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.3 8.925l-4.25-4.2 1.4-1.4c.383-.383.85-.575 1.4-.575s1.017.192 1.4.575l1.4 1.4c.383.383.583.842.6 1.375.017.533-.167 1-.55 1.4L19.3 8.925zM17.85 10.375L7.25 21H3v-4.25l10.6-10.6 4.25 4.225z"/></svg>
-      </div>
-      <div class="cat-info">
-        <div class="cat-name">Peinture & Décoration</div>
-        <div class="cat-desc">Peintures, vernis, enduits, accessoires</div>
-      </div>
+      <div class="cat-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.3 8.925l-4.25-4.2 1.4-1.4c.383-.383.85-.575 1.4-.575s1.017.192 1.4.575l1.4 1.4c.383.383.583.842.6 1.375.017.533-.167 1-.55 1.4L19.3 8.925zM17.85 10.375L7.25 21H3v-4.25l10.6-10.6 4.25 4.225z"/></svg></div>
+      <div class="cat-info"><div class="cat-name">Peinture & Décoration</div><div class="cat-desc">Peintures, vernis, enduits</div></div>
       <div class="cat-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 18l6-6-6-6"/></svg></div>
     </a>
-    
     <a href="#products" class="cat-card">
-      <div class="cat-icon">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
-      </div>
-      <div class="cat-info">
-        <div class="cat-name">Outillage & Quincaillerie</div>
-        <div class="cat-desc">Outils manuels, électroportatifs, vis, fixations</div>
-      </div>
+      <div class="cat-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg></div>
+      <div class="cat-info"><div class="cat-name">Outillage & Quincaillerie</div><div class="cat-desc">Outils, vis, fixations</div></div>
       <div class="cat-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 18l6-6-6-6"/></svg></div>
     </a>
-    
     <a href="#products" class="cat-card">
-      <div class="cat-icon">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22M12 6l7.53 13H4.47"/></svg>
-      </div>
-      <div class="cat-info">
-        <div class="cat-name">Électricité</div>
-        <div class="cat-desc">Câbles, prises, interrupteurs, éclairage</div>
-      </div>
+      <div class="cat-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg></div>
+      <div class="cat-info"><div class="cat-name">Électricité</div><div class="cat-desc">Câbles, prises, éclairage</div></div>
       <div class="cat-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 18l6-6-6-6"/></svg></div>
     </a>
   </div>
@@ -828,105 +840,34 @@ footer .logo-text small{color:#64748b}
   <div class="section-head">
     <span class="section-tag">Produits Phares</span>
     <h2>Nos <span class="blue">Best-Sellers</span></h2>
-    <p>Découvrez les produits les plus demandés par nos clients</p>
+    <p>Les produits les plus demandés</p>
   </div>
-  
   <div class="products-grid">
-    
-    <a href="https://wa.me/212617499697?text=Salam%20HYDROMAX!%20Bghit%20info%20%3A%20Mitigeur%20Lavabo%20Chrom%C3%A9%20Premium" target="_blank" class="product">
-      <div class="product-img">
-        <span class="product-tag promo">-20%</span>
-        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400&q=80" alt="Mitigeur">
-      </div>
-      <div class="product-info">
-        <div class="product-cat">Sanitaire</div>
-        <div class="product-name">Mitigeur Lavabo Chromé Premium</div>
-        <div class="product-price">450<small> DH</small></div>
-        <span class="product-btn">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Commander
-        </span>
-      </div>
+    <a href="https://wa.me/212617499697?text=Salam%20HYDROMAX!%20Bghit%20info%20%3A%20Mitigeur%20Lavabo" target="_blank" class="product">
+      <div class="product-img"><span class="product-tag">-20%</span><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400&q=80" alt="Mitigeur"></div>
+      <div class="product-info"><div class="product-cat">Sanitaire</div><div class="product-name">Mitigeur Lavabo Chromé</div><div class="product-price">450<small> DH</small></div><span class="product-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 21.5c-1.94 0-3.74-.59-5.22-1.6L3 21l1.1-3.7C2.99 15.7 2.5 13.91 2.5 12 2.5 6.75 6.75 2.5 12 2.5S21.5 6.75 21.5 12 17.25 21.5 12 21.5z"/></svg>Commander</span></div>
     </a>
-    
-    <a href="https://wa.me/212617499697?text=Salam%20HYDROMAX!%20Bghit%20info%20%3A%20Receveur%20Douche%2080x100" target="_blank" class="product">
-      <div class="product-img">
-        <span class="product-tag new">Nouveau</span>
-        <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=400&q=80" alt="Receveur douche">
-      </div>
-      <div class="product-info">
-        <div class="product-cat">Sanitaire</div>
-        <div class="product-name">Receveur Douche 80x100 cm</div>
-        <div class="product-price">1 200<small> DH</small></div>
-        <span class="product-btn">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Commander
-        </span>
-      </div>
+    <a href="https://wa.me/212617499697?text=Salam%20HYDROMAX!%20Bghit%20info%20%3A%20Receveur%20Douche" target="_blank" class="product">
+      <div class="product-img"><span class="product-tag new">Nouveau</span><img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=400&q=80" alt="Receveur"></div>
+      <div class="product-info"><div class="product-cat">Sanitaire</div><div class="product-name">Receveur Douche 80x100</div><div class="product-price">1 200<small> DH</small></div><span class="product-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 21.5c-1.94 0-3.74-.59-5.22-1.6L3 21l1.1-3.7C2.99 15.7 2.5 13.91 2.5 12 2.5 6.75 6.75 2.5 12 2.5S21.5 6.75 21.5 12 17.25 21.5 12 21.5z"/></svg>Commander</span></div>
     </a>
-    
-    <a href="https://wa.me/212617499697?text=Salam%20HYDROMAX!%20Bghit%20info%20%3A%20Peinture%20Murale%20Acrylique%2010L" target="_blank" class="product">
-      <div class="product-img">
-        <img src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=400&q=80" alt="Peinture">
-      </div>
-      <div class="product-info">
-        <div class="product-cat">Peinture</div>
-        <div class="product-name">Peinture Acrylique Murale 10L</div>
-        <div class="product-price">380<small> DH</small></div>
-        <span class="product-btn">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Commander
-        </span>
-      </div>
+    <a href="https://wa.me/212617499697?text=Salam%20HYDROMAX!%20Bghit%20info%20%3A%20Peinture%2010L" target="_blank" class="product">
+      <div class="product-img"><img src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=400&q=80" alt="Peinture"></div>
+      <div class="product-info"><div class="product-cat">Peinture</div><div class="product-name">Peinture Acrylique 10L</div><div class="product-price">380<small> DH</small></div><span class="product-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 21.5c-1.94 0-3.74-.59-5.22-1.6L3 21l1.1-3.7C2.99 15.7 2.5 13.91 2.5 12 2.5 6.75 6.75 2.5 12 2.5S21.5 6.75 21.5 12 17.25 21.5 12 21.5z"/></svg>Commander</span></div>
     </a>
-    
-    <a href="https://wa.me/212617499697?text=Salam%20HYDROMAX!%20Bghit%20info%20%3A%20Perceuse%20Visseuse%20Bosch" target="_blank" class="product">
-      <div class="product-img">
-        <span class="product-tag promo">PROMO</span>
-        <img src="https://images.unsplash.com/photo-1581147036324-c1c89c2c8b5c?w=400&q=80" alt="Perceuse">
-      </div>
-      <div class="product-info">
-        <div class="product-cat">Outillage</div>
-        <div class="product-name">Perceuse Visseuse Sans Fil 18V</div>
-        <div class="product-price">850<small> DH</small></div>
-        <span class="product-btn">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Commander
-        </span>
-      </div>
+    <a href="https://wa.me/212617499697?text=Salam%20HYDROMAX!%20Bghit%20info%20%3A%20Perceuse" target="_blank" class="product">
+      <div class="product-img"><span class="product-tag">PROMO</span><img src="https://images.unsplash.com/photo-1581147036324-c1c89c2c8b5c?w=400&q=80" alt="Perceuse"></div>
+      <div class="product-info"><div class="product-cat">Outillage</div><div class="product-name">Perceuse Sans Fil 18V</div><div class="product-price">850<small> DH</small></div><span class="product-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 21.5c-1.94 0-3.74-.59-5.22-1.6L3 21l1.1-3.7C2.99 15.7 2.5 13.91 2.5 12 2.5 6.75 6.75 2.5 12 2.5S21.5 6.75 21.5 12 17.25 21.5 12 21.5z"/></svg>Commander</span></div>
     </a>
-    
     <a href="https://wa.me/212617499697?text=Salam%20HYDROMAX!%20Bghit%20info%20%3A%20WC%20Suspendu" target="_blank" class="product">
-      <div class="product-img">
-        <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=400&q=80" alt="WC suspendu">
-      </div>
-      <div class="product-info">
-        <div class="product-cat">Sanitaire</div>
-        <div class="product-name">WC Suspendu Complet</div>
-        <div class="product-price">2 800<small> DH</small></div>
-        <span class="product-btn">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Commander
-        </span>
-      </div>
+      <div class="product-img"><img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=400&q=80" alt="WC"></div>
+      <div class="product-info"><div class="product-cat">Sanitaire</div><div class="product-name">WC Suspendu Complet</div><div class="product-price">2 800<small> DH</small></div><span class="product-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 21.5c-1.94 0-3.74-.59-5.22-1.6L3 21l1.1-3.7C2.99 15.7 2.5 13.91 2.5 12 2.5 6.75 6.75 2.5 12 2.5S21.5 6.75 21.5 12 17.25 21.5 12 21.5z"/></svg>Commander</span></div>
     </a>
-    
-    <a href="https://wa.me/212617499697?text=Salam%20HYDROMAX!%20Bghit%20info%20%3A%20Lavabo%20C%C3%A9ramique" target="_blank" class="product">
-      <div class="product-img">
-        <img src="https://images.unsplash.com/photo-1564540583246-934409427776?w=400&q=80" alt="Lavabo">
-      </div>
-      <div class="product-info">
-        <div class="product-cat">Sanitaire</div>
-        <div class="product-name">Lavabo Céramique Moderne</div>
-        <div class="product-price">680<small> DH</small></div>
-        <span class="product-btn">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Commander
-        </span>
-      </div>
+    <a href="https://wa.me/212617499697?text=Salam%20HYDROMAX!%20Bghit%20info%20%3A%20Lavabo" target="_blank" class="product">
+      <div class="product-img"><img src="https://images.unsplash.com/photo-1564540583246-934409427776?w=400&q=80" alt="Lavabo"></div>
+      <div class="product-info"><div class="product-cat">Sanitaire</div><div class="product-name">Lavabo Céramique</div><div class="product-price">680<small> DH</small></div><span class="product-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 21.5c-1.94 0-3.74-.59-5.22-1.6L3 21l1.1-3.7C2.99 15.7 2.5 13.91 2.5 12 2.5 6.75 6.75 2.5 12 2.5S21.5 6.75 21.5 12 17.25 21.5 12 21.5z"/></svg>Commander</span></div>
     </a>
   </div>
-  
   <a href="https://wa.me/212617499697?text=Salam%20HYDROMAX!%20Bghit%20catalogue%20kaml" target="_blank" class="see-all">
     Voir tout le catalogue
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -938,81 +879,41 @@ footer .logo-text small{color:#64748b}
   <div class="section-head">
     <span class="section-tag">Nos Avantages</span>
     <h2>Pourquoi <span class="blue">HYDROMAX</span></h2>
-    <p>Le choix de confiance pour tous vos projets</p>
+    <p>Le choix de confiance</p>
   </div>
-  
   <div class="features-grid">
     <div class="feature">
-      <div class="feature-icon">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm12 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm-1.5-5.5V9.5h2.5l1.96 2.5H16.5z"/></svg>
-      </div>
-      <div>
-        <h3>Livraison Rapide</h3>
-        <p>Livraison à domicile partout au Maroc sous 24-48h</p>
-      </div>
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm12 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg></div>
+      <div><h3>Livraison Rapide</h3><p>Partout au Maroc sous 24-48h</p></div>
     </div>
-    
     <div class="feature">
-      <div class="feature-icon">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-      </div>
-      <div>
-        <h3>Qualité Garantie</h3>
-        <p>Produits certifiés des meilleures marques internationales</p>
-      </div>
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg></div>
+      <div><h3>Qualité Garantie</h3><p>Produits certifiés des meilleures marques</p></div>
     </div>
-    
     <div class="feature">
-      <div class="feature-icon">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 6c-2.61.7-5.67 1-8.5 1s-5.89-.3-8.5-1L3 8c1.86.5 4 .83 6 1v13h2v-6h2v6h2V9c2-.17 4.14-.5 6-1l-.5-2zM12 6c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>
-      </div>
-      <div>
-        <h3>Conseil Expert</h3>
-        <p>Notre équipe vous accompagne pour le bon choix</p>
-      </div>
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 6c-2.61.7-5.67 1-8.5 1s-5.89-.3-8.5-1L3 8c1.86.5 4 .83 6 1v13h2v-6h2v6h2V9c2-.17 4.14-.5 6-1l-.5-2zM12 6c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg></div>
+      <div><h3>Conseil Expert</h3><p>Notre équipe vous accompagne</p></div>
     </div>
-    
     <div class="feature">
-      <div class="feature-icon">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
-      </div>
-      <div>
-        <h3>Prix Compétitifs</h3>
-        <p>Les meilleurs tarifs du marché pour tous nos produits</p>
-      </div>
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div>
+      <div><h3>Prix Compétitifs</h3><p>Les meilleurs tarifs du marché</p></div>
     </div>
   </div>
 </section>
 
-<!-- ===== SHOWROOM GALLERY ===== -->
+<!-- ===== GALLERY ===== -->
 <section>
   <div class="section-head">
     <span class="section-tag">Showroom</span>
     <h2>Notre <span class="blue">Galerie</span></h2>
-    <p>Inspirez-vous de nos réalisations et installations</p>
+    <p>Inspirez-vous de nos réalisations</p>
   </div>
-  
   <div class="gallery-grid">
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=80" alt="Salle de bain">
-      <span class="gallery-label">Salle de bain</span>
-    </div>
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=80" alt="Cuisine">
-      <span class="gallery-label">Cuisine</span>
-    </div>
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?w=400&q=80" alt="Douche">
-      <span class="gallery-label">Douche</span>
-    </div>
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=400&q=80" alt="Robinets">
-      <span class="gallery-label">Robinetterie</span>
-    </div>
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=400&q=80" alt="WC">
-      <span class="gallery-label">WC moderne</span>
-    </div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=80" alt=""><span class="gallery-label">Salle de bain</span></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=80" alt=""><span class="gallery-label">Cuisine</span></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?w=400&q=80" alt=""><span class="gallery-label">Douche</span></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=400&q=80" alt=""><span class="gallery-label">Robinetterie</span></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=400&q=80" alt=""><span class="gallery-label">WC moderne</span></div>
   </div>
 </section>
 
@@ -1021,43 +922,12 @@ footer .logo-text small{color:#64748b}
   <div class="section-head">
     <span class="section-tag">Témoignages</span>
     <h2>Ils Nous Font <span class="blue">Confiance</span></h2>
-    <p>Plus de 10 000 clients satisfaits</p>
+    <p>10 000+ clients satisfaits</p>
   </div>
-  
   <div class="testi-wrap">
-    <div class="testi">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Excellent service, livraison rapide et produits de qualité. J'ai rénové toute ma salle de bain grâce à eux !"</p>
-      <div class="testi-author">
-        <div class="testi-avatar">M</div>
-        <div>
-          <div class="testi-name">Mohammed B.</div>
-          <div class="testi-loc">Casablanca</div>
-        </div>
-      </div>
-    </div>
-    <div class="testi">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Conseils professionnels, prix imbattables. L'équipe HYDROMAX est très à l'écoute. Je recommande vivement !"</p>
-      <div class="testi-author">
-        <div class="testi-avatar">F</div>
-        <div>
-          <div class="testi-name">Fatima Z.</div>
-          <div class="testi-loc">Rabat</div>
-        </div>
-      </div>
-    </div>
-    <div class="testi">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Large choix de produits, qualité au rendez-vous. Mon entreprise commande régulièrement chez eux."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">A</div>
-        <div>
-          <div class="testi-name">Ahmed K.</div>
-          <div class="testi-loc">Marrakech</div>
-        </div>
-      </div>
-    </div>
+    <div class="testi"><div class="testi-stars">★★★★★</div><p class="testi-text">"Excellent service, livraison rapide et produits de qualité. J'ai rénové toute ma salle de bain !"</p><div class="testi-author"><div class="testi-avatar">M</div><div><div class="testi-name">Mohammed B.</div><div class="testi-loc">Casablanca</div></div></div></div>
+    <div class="testi"><div class="testi-stars">★★★★★</div><p class="testi-text">"Conseils professionnels, prix imbattables. Équipe très à l'écoute. Je recommande vivement !"</p><div class="testi-author"><div class="testi-avatar">F</div><div><div class="testi-name">Fatima Z.</div><div class="testi-loc">Rabat</div></div></div></div>
+    <div class="testi"><div class="testi-stars">★★★★★</div><p class="testi-text">"Large choix, qualité au rendez-vous. Mon entreprise commande régulièrement chez eux."</p><div class="testi-author"><div class="testi-avatar">A</div><div><div class="testi-name">Ahmed K.</div><div class="testi-loc">Marrakech</div></div></div></div>
   </div>
 </section>
 
@@ -1066,38 +936,20 @@ footer .logo-text small{color:#64748b}
   <div class="section-head">
     <span class="section-tag">Contact</span>
     <h2>Restons <span class="blue">en Contact</span></h2>
-    <p>Notre équipe est à votre disposition</p>
+    <p>Notre équipe à votre disposition</p>
   </div>
-  
   <div class="contact-grid">
     <a href="tel:+212617499697" class="contact-card">
-      <div class="contact-icon">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
-      </div>
-      <div class="contact-info">
-        <div class="contact-label">Téléphone</div>
-        <div class="contact-value">+212 617 499 697</div>
-      </div>
+      <div class="contact-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg></div>
+      <div class="contact-info"><div class="contact-label">Téléphone</div><div class="contact-value">+212 617 499 697</div></div>
     </a>
-    
     <a href="https://wa.me/212617499697?text=Salam%20HYDROMAX!" target="_blank" class="contact-card whatsapp">
-      <div class="contact-icon">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 21.5c-1.94 0-3.74-.59-5.22-1.6L3 21l1.1-3.7C2.99 15.7 2.5 13.91 2.5 12 2.5 6.75 6.75 2.5 12 2.5S21.5 6.75 21.5 12 17.25 21.5 12 21.5z"/></svg>
-      </div>
-      <div class="contact-info">
-        <div class="contact-label">WhatsApp</div>
-        <div class="contact-value">Discuter Maintenant</div>
-      </div>
+      <div class="contact-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 21.5c-1.94 0-3.74-.59-5.22-1.6L3 21l1.1-3.7C2.99 15.7 2.5 13.91 2.5 12 2.5 6.75 6.75 2.5 12 2.5S21.5 6.75 21.5 12 17.25 21.5 12 21.5z"/></svg></div>
+      <div class="contact-info"><div class="contact-label">WhatsApp</div><div class="contact-value">Discuter Maintenant</div></div>
     </a>
-    
     <a href="#" class="contact-card">
-      <div class="contact-icon">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
-      </div>
-      <div class="contact-info">
-        <div class="contact-label">Adresse</div>
-        <div class="contact-value">Casablanca, Maroc</div>
-      </div>
+      <div class="contact-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg></div>
+      <div class="contact-info"><div class="contact-label">Adresse</div><div class="contact-value">Casablanca, Maroc</div></div>
     </a>
   </div>
 </section>
@@ -1106,9 +958,9 @@ footer .logo-text small{color:#64748b}
 <section class="cta-section">
   <div class="cta-box">
     <h2>Besoin d'un Devis ?</h2>
-    <p>Contactez-nous via WhatsApp pour un devis personnalisé et rapide</p>
+    <p>Contactez-nous via WhatsApp pour un devis personnalisé</p>
     <a href="https://wa.me/212617499697?text=Salam%20HYDROMAX!%20Bghit%20devis" target="_blank" class="cta-btn">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 21.5c-1.94 0-3.74-.59-5.22-1.6L3 21l1.1-3.7C2.99 15.7 2.5 13.91 2.5 12 2.5 6.75 6.75 2.5 12 2.5S21.5 6.75 21.5 12 17.25 21.5 12 21.5z"/></svg>
       Demander un Devis
     </a>
   </div>
@@ -1117,36 +969,69 @@ footer .logo-text small{color:#64748b}
 <!-- ===== FOOTER ===== -->
 <footer>
   <a href="#" class="logo">
-    <div class="logo-icon">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-5.5 7.5-8 11.5-8 14.5C4 20.5 7.5 24 12 24s8-3.5 8-7.5C20 13.5 17.5 9.5 12 2z"/></svg>
-    </div>
+    <div class="logo-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-5.5 7.5-8 11.5-8 14.5C4 20.5 7.5 24 12 24s8-3.5 8-7.5C20 13.5 17.5 9.5 12 2z"/></svg></div>
     <div class="logo-text">HYDROMAX<small>Sanitaire · Droguerie</small></div>
   </a>
-  
-  <p class="foot-desc">Votre spécialiste en sanitaire, plomberie, peinture et outillage professionnel au Maroc.</p>
-  
+  <p class="foot-desc">Votre spécialiste en sanitaire, plomberie, peinture et outillage au Maroc.</p>
   <div class="foot-hours">
     <div class="foot-hours-title">Horaires d'Ouverture</div>
     <div class="foot-hour-row"><span>Lun — Ven</span><span>08:30 — 19:00</span></div>
     <div class="foot-hour-row"><span>Samedi</span><span>09:00 — 18:00</span></div>
     <div class="foot-hour-row"><span>Dimanche</span><span>Fermé</span></div>
   </div>
-  
-  <div class="foot-socials">
-    <a href="#" class="foot-soc" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-    <a href="#" class="foot-soc" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98C.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
-    <a href="https://wa.me/212617499697" class="foot-soc" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
-  </div>
-  
   <div class="foot-bottom">© 2026 HYDROMAX · MADE IN MAROC 🇲🇦</div>
 </footer>
 
 <!-- ===== WHATSAPP FLOAT ===== -->
 <a href="https://wa.me/212617499697?text=Salam%20HYDROMAX!" target="_blank" class="wa-float" aria-label="WhatsApp">
-  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 21.5c-1.94 0-3.74-.59-5.22-1.6L3 21l1.1-3.7C2.99 15.7 2.5 13.91 2.5 12 2.5 6.75 6.75 2.5 12 2.5S21.5 6.75 21.5 12 17.25 21.5 12 21.5z"/></svg>
 </a>
 
+<!-- ===== POPUP MODAL ===== -->
+<div class="modal" id="promoModal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-emoji">🎉</div>
+    <h3>Offre <span class="blue">Bienvenue</span> !</h3>
+    <p>Profitez de <strong>-20% de réduction</strong> sur votre première commande</p>
+    <div class="modal-highlight">
+      <div class="num">-20%</div>
+      <div class="lbl">Code: WELCOME20</div>
+    </div>
+    <a href="https://wa.me/212617499697?text=Salam%20HYDROMAX!%20Bghit%20nakhud%20WELCOME20%20(-20%25)" target="_blank" class="modal-btn" onclick="closeModal()">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 21.5c-1.94 0-3.74-.59-5.22-1.6L3 21l1.1-3.7C2.99 15.7 2.5 13.91 2.5 12 2.5 6.75 6.75 2.5 12 2.5S21.5 6.75 21.5 12 17.25 21.5 12 21.5z"/></svg>
+      Réclamer Maintenant
+    </a>
+  </div>
+</div>
+
 <script>
+// Floating water drops in background
+(function(){
+  var c = document.getElementById('dropsBg');
+  if(!c) return;
+  for(var i=0;i<15;i++){
+    var d = document.createElement('div');
+    d.className = 'drop';
+    d.style.left = Math.random()*100 + '%';
+    d.style.animationDuration = (5 + Math.random()*8) + 's';
+    d.style.animationDelay = Math.random()*8 + 's';
+    d.style.width = (4 + Math.random()*8) + 'px';
+    d.style.height = d.style.width;
+    c.appendChild(d);
+  }
+})();
+
+// Modal popup
+function closeModal(){document.getElementById('promoModal').classList.remove('open')}
+setTimeout(function(){
+  if(!sessionStorage.getItem('hmPromo')){
+    document.getElementById('promoModal').classList.add('open');
+    sessionStorage.setItem('hmPromo','1');
+  }
+}, 3500);
+
+// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(function(link){
   link.addEventListener('click', function(e){
     var href = this.getAttribute('href');
